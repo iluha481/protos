@@ -7,6 +7,7 @@ option go_package = "tuzov.sso.v1;ssov1";
 service Auth {
     rpc Register (RegisterRequest) returns (RegisterResponse);
     rpc Login (LoginRequest) returns (LoginResponse);
+    rpc RefreshToken (RefreshRequest) returns (RefreshResponse);
 }
 
 message RegisterRequest {
@@ -26,4 +27,14 @@ message LoginRequest {
 
 message LoginResponse {
   string token = 1; 
+  string refresh_token = 2;
+}
+
+message RefreshRequest {
+  string refresh_token = 1;
+}
+
+message RefreshResponse {
+  string token = 1;
+  string refresh_token = 2;
 }
